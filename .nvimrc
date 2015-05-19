@@ -22,18 +22,11 @@ colors satori
 
 " Plugins
 call plug#begin('~/.nvim/plugged')
-Plug 'Raimondi/delimitMate'
-Plug 'fatih/vim-go'
-Plug 'wting/rust.vim'
-Plug 'kien/ctrlp.vim'
-"Plug 'itchyny/lightline.vim'
+	Plug 'Raimondi/delimitMate'
+	Plug 'fatih/vim-go'
+	Plug 'rust-lang/rust.vim'
+	Plug 'kien/ctrlp.vim'
 call plug#end()
-
-" Lightline
-" set laststatus=2
-"let g:lightline = {
-"	\ 'colorscheme': 'satori',
-"	\ }
 
 """ Custom additions
 " Set cursor to last known position
@@ -42,16 +35,17 @@ autocmd BufReadPost *
 	\	exe "normal! g`\"" |
 	\	endif
 
+" vim-go
+let g:go_fmt_command = "goimports"
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+
 " highlight Pkgfiles
 au BufNewFile,BufRead *Pkgfile set filetype=sh
 
 " highlight toml
 au BufNewFile,BufRead *toml set filetype=dosini
-
-" vim-go
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_fmt_fail_silently = 1
