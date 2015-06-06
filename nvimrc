@@ -26,6 +26,7 @@ call plug#begin('~/.nvim/plugged')
 	Plug 'fatih/vim-go'
 	Plug 'rust-lang/rust.vim'
 	Plug 'kien/ctrlp.vim'
+	Plug 'lervag/vimtex'
 call plug#end()
 
 """ Custom additions
@@ -43,6 +44,9 @@ let g:go_highlight_operators = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
+
+" vimtex
+let g:vimtex_view_general_viewer = "mupdf"
 
 " highlight Pkgfiles
 au BufNewFile,BufRead *Pkgfile set filetype=sh
