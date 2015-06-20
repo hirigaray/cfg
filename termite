@@ -1,0 +1,48 @@
+[options]
+# Fonts
+font = Eientei 8 
+allow_bold = false
+
+size_hints = false
+scroll_on_output = false
+scroll_on_keystroke = true
+visible_bell = true
+mouse_autohide = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+
+cursor_blink = on
+cursor_shape = underline
+
+[colors]
+foreground = #839496
+background = #09090d
+cursor = #839496
+highlight = #839496
+#black
+color0 = #353540
+color8 = #545466
+#red
+color1 = #8c5760
+color9 = #b26f7a
+#green
+color2 = #7b8c58
+color10 = #9db270
+#yellow
+color3 = #8c6e43
+color11 = #b28c55
+#blue
+color4 = #58698c
+color12 = #7086b2
+#magenta
+color5 = #7b5e7d
+color13 = #9c77b2
+#cyan
+color6 = #66808c
+color14 = #82a2b2
+#white
+color7 = #8c8b8b
+color15 = #b8b8c8
+
+# vim: ft=dosini cms=#%s
