@@ -1,44 +1,39 @@
 " It's not 1976 anymore
 set backspace=indent,eol,start
-set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+set tabstop=4
 set number
-set incsearch
 set encoding=utf8
 set cursorline
-set linebreak
 set tw=80
+set list
+set listchars=tab:▸\ 
 
 " Things I don't use.
-set undodir=~/.nvim/useless/undo/
 set backupdir=~/.nvim/useless/backup/
 set directory=~/.nvim/useless/swp/
+set undodir=~/.nvim/useless/undo/
 
 " Colors
 syntax on
 colors satori
 
-" Plugins
+""" Plugins
 call plug#begin('~/.nvim/plugged')
-	Plug 'Lokaltog/vim-easymotion'
+	Plug 'easymotion/vim-easymotion'
+	Plug 'tpope/vim-unimpaired'
 	Plug 'raichoo/haskell-vim'
-	Plug 'Raimondi/delimitMate'
 	Plug 'rust-lang/rust.vim'
-	Plug 'fatih/vim-go'
+	Plug 'tpope/vim-surround'
+	Plug 'godlygeek/tabular'
 	Plug 'kien/ctrlp.vim'
 	Plug 'lervag/vimtex'
+	Plug 'fatih/vim-go'
 call plug#end()
 
-""" Custom additions
-" Set cursor to last known position
-autocmd BufReadPost *
-	\	if line("'\"") > 1 && line("'\"") <= line("$") |                      
-	\	exe "normal! g`\"" |
-	\	endif
-
 " vim-easymotion
-nmap f <Plug>(easymotion-s)
+map  / <Plug>(easymotion-sn)
 
 " vim-go
 let g:go_fmt_command = "goimports"
@@ -60,8 +55,21 @@ let g:haskell_enable_recursivedo = 1
 let g:haskell_enable_arrowsyntax = 1
 let g:haskell_enable_typeroles = 1
 
-" highlight Pkgfiles
-au BufNewFile,BufRead *Pkgfile set filetype=sh
+""" Custom additions
+" Set cursor to last known position
+autocmd BufReadPost *
+	\ if line("'\"") > 1 && line("'\"") <= line("$") |
+	\ exe "normal! g`\"" |
+	\ endif
 
-" highlight toml
-au BufNewFile,BufRead *toml set filetype=dosini
+" Text bubbling
+" Bubble single lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+" Bubble multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
+
+" highlight files
+au BufNewFile,BufRead *Pkgfile set filetype=sh  " Pkgfile
+au BufNewFile,BufRead *toml set filetype=dosini " toml
