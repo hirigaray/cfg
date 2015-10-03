@@ -1,18 +1,23 @@
 " It's not 1976 anymore
 set backspace=indent,eol,start
-set shiftwidth=4
 set softtabstop=4
+set shiftwidth=4
 set tabstop=4
-set number
 set encoding=utf8
 set cursorline
+set number
 set tw=80
 set list
-set listchars=tab:▸\ 
+set mouse=v
+set listchars=tab:›\ 
+set laststatus=1
+set ttimeout
+set ttimeoutlen=0
+set matchtime=0
 
 " Things I don't use.
-set backupdir=~/.nvim/useless/backup/
-set directory=~/.nvim/useless/swp/
+set directory=~/.nvim/useless/swap/
+set backupdir=~/.nvim/useless/bkp/
 set undodir=~/.nvim/useless/undo/
 
 " Colors
@@ -21,28 +26,37 @@ colors satori
 
 """ Plugins
 call plug#begin('~/.nvim/plugged')
+	Plug 'rhysd/vim-crystal'
 	Plug 'easymotion/vim-easymotion'
+	Plug 'cespare/vim-toml'
 	Plug 'tpope/vim-unimpaired'
 	Plug 'raichoo/haskell-vim'
 	Plug 'rust-lang/rust.vim'
 	Plug 'tpope/vim-surround'
-	Plug 'godlygeek/tabular'
-	Plug 'kien/ctrlp.vim'
+	Plug 'junegunn/vim-plug'
+	Plug 'junegunn/vim-easy-align'
 	Plug 'lervag/vimtex'
 	Plug 'fatih/vim-go'
 call plug#end()
 
 " vim-easymotion
-map  / <Plug>(easymotion-sn)
+map / <Plug>(easymotion-sn)
+set hlsearch!
+hi link EasyMotionTarget Search
+hi link EasyMotionHL Search
+hi link EasyMotionShade Comment
+
+" rust.vim
+let g:rust_recommended_style = 0
 
 " vim-go
 let g:go_fmt_command = "goimports"
 let g:go_highlight_build_constraints = 1
+let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
 
 " vimtex
 let g:vimtex_view_general_viewer = "mupdf"
@@ -64,12 +78,11 @@ autocmd BufReadPost *
 
 " Text bubbling
 " Bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
+nmap <C-k> [e
+nmap <C-j> ]e
 " Bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
+vmap <C-k> [egv
+vmap <C-j> ]egv
 
 " highlight files
 au BufNewFile,BufRead *Pkgfile set filetype=sh  " Pkgfile
-au BufNewFile,BufRead *toml set filetype=dosini " toml
