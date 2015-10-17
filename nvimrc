@@ -13,20 +13,16 @@ set listchars=tab:›\
 set laststatus=1
 set ttimeout
 set ttimeoutlen=0
-set matchtime=0
 
+set matchtime=0
 " Things I don't use.
 set directory=~/.nvim/useless/swap/
 set backupdir=~/.nvim/useless/bkp/
 set undodir=~/.nvim/useless/undo/
 
-" Colors
-syntax on
-colors satori
-
 """ Plugins
 call plug#begin('~/.nvim/plugged')
-	Plug 'rhysd/vim-crystal'
+	Plug 'kori/term.vim'
 	Plug 'easymotion/vim-easymotion'
 	Plug 'cespare/vim-toml'
 	Plug 'tpope/vim-unimpaired'
@@ -39,12 +35,17 @@ call plug#begin('~/.nvim/plugged')
 	Plug 'fatih/vim-go'
 call plug#end()
 
+" Colors
+syntax on
+colors term
+
 " vim-easymotion
 map / <Plug>(easymotion-sn)
 set hlsearch!
-hi link EasyMotionTarget Search
-hi link EasyMotionHL Search
 hi link EasyMotionShade Comment
+hi link EasyMotionTarget Search
+hi link EasyMotionMoveHL Search
+hi link EasyMotionHL Search
 
 " rust.vim
 let g:rust_recommended_style = 0
