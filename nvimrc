@@ -6,14 +6,12 @@ set tabstop=4
 set encoding=utf8
 set cursorline
 set number
-set tw=80
 set list
 set mouse=v
 set listchars=tab:›\ 
 set laststatus=1
 set ttimeout
 set ttimeoutlen=0
-
 set matchtime=0
 " Things I don't use.
 set directory=~/.nvim/useless/swap/
@@ -22,15 +20,15 @@ set undodir=~/.nvim/useless/undo/
 
 """ Plugins
 call plug#begin('~/.nvim/plugged')
-	Plug 'kori/term.vim'
 	Plug 'easymotion/vim-easymotion'
-	Plug 'cespare/vim-toml'
+	Plug 'junegunn/vim-easy-align'
 	Plug 'tpope/vim-unimpaired'
 	Plug 'raichoo/haskell-vim'
 	Plug 'rust-lang/rust.vim'
 	Plug 'tpope/vim-surround'
 	Plug 'junegunn/vim-plug'
-	Plug 'junegunn/vim-easy-align'
+	Plug 'cespare/vim-toml'
+	Plug 'kori/term.vim'
 	Plug 'lervag/vimtex'
 	Plug 'fatih/vim-go'
 call plug#end()
