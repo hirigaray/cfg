@@ -3,31 +3,35 @@ set backspace=indent,eol,start
 set softtabstop=4
 set shiftwidth=4
 set tabstop=4
-set encoding=utf8
 set cursorline
-set number
-set list
-set mouse=v
-set listchars=tab:›\ 
-set laststatus=1
 set ttimeout
+set number
+set mouse=v
+set laststatus=1
 set ttimeoutlen=0
 set matchtime=0
+set list
+set listchars=tab:›\ 
 " Things I don't use.
-set directory=~/.nvim/useless/swap/
-set backupdir=~/.nvim/useless/bkp/
-set undodir=~/.nvim/useless/undo/
+let cfghome = $XDG_CONFIG_HOME
+set directory=cfghome."/nvim/useless/swap/"
+set backupdir=cfghome."/nvim/useless/bkp/"
+set undodir=cfghome."/mvim/useless/undo/"
 
 """ Plugins
 call plug#begin('~/.nvim/plugged')
+	Plug 'junegunn/rainbow_parentheses.vim'
+	Plug 'neovimhaskell/haskell-vim'
 	Plug 'easymotion/vim-easymotion'
 	Plug 'junegunn/vim-easy-align'
+	Plug 'elixir-lang/vim-elixir'
 	Plug 'tpope/vim-unimpaired'
-	Plug 'raichoo/haskell-vim'
 	Plug 'rust-lang/rust.vim'
 	Plug 'tpope/vim-surround'
 	Plug 'junegunn/vim-plug'
 	Plug 'cespare/vim-toml'
+	Plug 'kovisoft/slimv'
+	Plug 'guns/vim-sexp'
 	Plug 'kori/term.vim'
 	Plug 'lervag/vimtex'
 	Plug 'fatih/vim-go'
@@ -67,6 +71,14 @@ let g:haskell_enable_quantification = 1
 let g:haskell_enable_recursivedo = 1
 let g:haskell_enable_arrowsyntax = 1
 let g:haskell_enable_typeroles = 1
+
+" rainbow_parentheses.vim
+augroup rainbow_lisp
+  autocmd!
+  autocmd FileType lisp,clojure,scheme RainbowParentheses
+augroup END
+let g:rainbow#blacklist = [6, 2]
+
 
 """ Custom additions
 " Set cursor to last known position
