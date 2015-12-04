@@ -13,10 +13,10 @@ set matchtime=0
 set list
 set listchars=tab:›\ 
 " Things I don't use.
-let cfghome = $XDG_CONFIG_HOME
-set directory=cfghome."/nvim/useless/swap/"
-set backupdir=cfghome."/nvim/useless/bkp/"
-set undodir=cfghome."/mvim/useless/undo/"
+let s:cfghome = $XDG_CONFIG_HOME
+execute 'set directory=' . s:cfghome . '/nvim/useless/swap/'
+execute 'set backupdir=' . s:cfghome . '/nvim/useless/bkp/'
+execute 'set undodir=' . s:cfghome . '/nvim/useless/undo/'
 
 """ Plugins
 call plug#begin('~/.nvim/plugged')
