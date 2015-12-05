@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # configurationings
-hsetroot -tile "$HOME/media/img/Patterns/mawattemasu.png"
+hsetroot -fill "$HOME/media/img/wallpapers/summa.png"
 setxkbmap -option "compose:menu" br
 xsetroot -cursor_name left_ptr
 
@@ -9,7 +9,6 @@ xsetroot -cursor_name left_ptr
 redshift &
 compton  &
 sxhkd    &
-dunst    &
 panel    &
 
 exec wew | lad
