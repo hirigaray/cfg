@@ -4,19 +4,38 @@ set backspace=indent,eol,start
 
 " {{{ Plugins
 call plug#begin('~/.nvim/plugged')
+" {{{ plug itself and colorscheme
+	Plug 'junegunn/vim-plug'
+	Plug 'kori/term.vim'
+" }}}
+
+" {{{ language support
+" {{{ lisp
+	Plug 'guns/vim-sexp'
+	Plug 'kovisoft/slimv'
 	Plug 'junegunn/rainbow_parentheses.vim'
+" }}}
+" {{{ haskell
 	Plug 'neovimhaskell/haskell-vim'
-	Plug 'junegunn/vim-easy-align'
+" }}}
+" {{{ elixir
 	Plug 'elixir-lang/vim-elixir'
+" }}}
+" {{{ go
+	Plug 'fatih/vim-go'
+" }}}
+" {{{ toml
+	Plug 'cespare/vim-toml'
+" }}}
+" }}}
+
+" {{{ extra editing helpers
 	Plug 'tpope/vim-unimpaired'
 	Plug 'tpope/vim-surround'
-	Plug 'junegunn/vim-plug'
-	Plug 'cespare/vim-toml'
-	Plug 'kovisoft/slimv'
-	Plug 'guns/vim-sexp'
-	Plug 'kori/term.vim'
-	Plug 'fatih/vim-go'
+	Plug 'easymotion/vim-easymotion'
+" }}}
 call plug#end()
+
 " {{{ Plugin settings
 " {{{ vim-go
 let g:go_fmt_command = "goimports"
@@ -42,6 +61,14 @@ augroup rainbow_lisp
 augroup END
 let g:rainbow#blacklist = [6, 2]
 " }}}
+" {{{ vim-easymotion
+	map / <Plug>(easymotion-sn)
+	set hlsearch!
+	hi link EasyMotionShade Comment
+	hi link EasyMotionTarget Search
+	hi link EasyMotionMoveHL Search
+	hi link EasyMotionHL Search
+" }}}
 " }}}
 " }}}
 
@@ -51,7 +78,7 @@ set shiftwidth=4
 set tabstop=4
 " }}}
 
-" {{{ Visual settings
+"{{{ Visual settings
 syntax on
 colors term
 set cursorline
