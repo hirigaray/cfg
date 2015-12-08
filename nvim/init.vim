@@ -3,7 +3,7 @@ set backspace=indent,eol,start
 " }}}
 
 " {{{ Plugins
-call plug#begin('~/.nvim/plugged')
+call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " {{{ plug itself and colorscheme
 	Plug 'junegunn/vim-plug'
 	Plug 'kori/term.vim'
@@ -48,7 +48,7 @@ let g:go_highlight_structs = 1
 " }}}
 " {{{ haskell-vim
 let g:haskell_enable_pattern_synonyms = 1
-let g:haskell_enable_static_pointers = 1 
+let g:haskell_enable_static_pointers = 1
 let g:haskell_enable_quantification = 1
 let g:haskell_enable_recursivedo = 1
 let g:haskell_enable_arrowsyntax = 1
