@@ -1,0 +1,48 @@
+# General hotkeys
+super + Return
+	st
+
+super + r
+	run
+
+super + {s,v}
+	launchwith {surf,mpv}
+
+Pause
+	slock
+
+# Window management hotkeys
+
+super + {g, q, f}
+	{centerw, killwa, zoomw} $(pfw)
+
+super + Tab
+	focusw next
+
+super + KP_{Home,Prior,End,Next}
+	cornerw {tl,tr,bl,br}
+
+super + {h,j,k,l}
+	wmv {-6 0,0 +12, 0 -12, +6 0} $(pfw)
+
+super + shift + {h,j,k,l}
+	wrs {-6 0,0 +12, 0 -12, +6 0} $(pfw)
+
+super + control + {h,j,k,l}
+	wmv {-12 0,0 +24, 0 -24, +12 0} $(pfw)
+
+super + shift + control + {h,j,k,l}
+	wrs {-12 0,0 +24, 0 -24, +12 0} $(pfw)
+
+super + {1,2,3,4,5,6}
+	wm -t {1,2,3,4,5,6}
+
+super + shift + {1,2,3,4,5,6}
+	wm -a {1,2,3,4,5,6}
+
+super + !button1
+	wmv -a %i %i $(pfw)
+
+# Reload configuration
+super + Escape
+    pkill -USR1 -x sxhkd
