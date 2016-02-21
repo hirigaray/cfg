@@ -1,0 +1,9 @@
+song_list_format = "$2%t$1 by $6%a$1 $R %b$9"
+playlist_display_mode = "classic"
+titles_visibility = "no"
+header_visibility = "no"
+statusbar_visibility = "no"
+
+ask_before_clearing_playlists = "no"
+progressbar_look = ""
+progressbar_elapsed_color = "cyan"
