@@ -11,9 +11,9 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
 " {{{ language support
 " {{{ lisp
-	Plug 'guns/vim-sexp'
-	Plug 'kovisoft/slimv'
-	Plug 'junegunn/rainbow_parentheses.vim'
+	Plug 'jiangmiao/auto-pairs', { 'for': 'scheme' }
+	autocmd FileType scheme setlocal expandtab shiftwidth=2 softtabstop=2
+
 " }}}
 " {{{ haskell
 	Plug 'neovimhaskell/haskell-vim'
@@ -27,12 +27,20 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " {{{ toml
 	Plug 'cespare/vim-toml'
 " }}}
+" {{{ rust
+	Plug 'rust-lang/rust.vim'
+" }}}
+" {{{ nim
+	Plug 'kori/vim-nim'
+	autocmd FileType nim setlocal shiftwidth=2 softtabstop=2 tabstop=2
+" }}}
 " }}}
 
 " {{{ extra editing helpers
 	Plug 'tpope/vim-unimpaired'
 	Plug 'tpope/vim-surround'
 	Plug 'easymotion/vim-easymotion'
+	Plug 'ap/vim-css-color'
 " }}}
 call plug#end()
 
@@ -54,13 +62,6 @@ let g:haskell_enable_recursivedo = 1
 let g:haskell_enable_arrowsyntax = 1
 let g:haskell_enable_typeroles = 1
 " }}}
-" {{{ rainbow_parentheses.vim
-augroup rainbow_lisp
-  autocmd!
-  autocmd FileType lisp,clojure,scheme RainbowParentheses
-augroup END
-let g:rainbow#blacklist = [6, 2]
-" }}}
 " {{{ vim-easymotion
 	map / <Plug>(easymotion-sn)
 	set hlsearch!
@@ -81,6 +82,7 @@ set tabstop=4
 "{{{ Visual settings
 syntax on
 colors term
+
 set cursorline
 set number
 set laststatus=1
