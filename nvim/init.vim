@@ -1,5 +1,6 @@
 " {{{ It's not 1976 anymore
 set backspace=indent,eol,start
+let mapleader = "\<Space>"
 " }}}
 
 " {{{ Plugins
@@ -10,10 +11,10 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " }}}
 
 " {{{ language support
-" {{{ lisp
-	Plug 'jiangmiao/auto-pairs', { 'for': 'scheme' }
+" {{{ scheme
+	Plug 'kovisoft/paredit'
+	let g:paredit_electric_return=0
 	autocmd FileType scheme setlocal expandtab shiftwidth=2 softtabstop=2
-
 " }}}
 " {{{ haskell
 	Plug 'neovimhaskell/haskell-vim'
@@ -21,18 +22,11 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " {{{ elixir
 	Plug 'elixir-lang/vim-elixir'
 " }}}
-" {{{ go
-	Plug 'fatih/vim-go'
-" }}}
 " {{{ toml
 	Plug 'cespare/vim-toml'
 " }}}
 " {{{ rust
 	Plug 'rust-lang/rust.vim'
-" }}}
-" {{{ nim
-	Plug 'kori/vim-nim'
-	autocmd FileType nim setlocal shiftwidth=2 softtabstop=2 tabstop=2
 " }}}
 " }}}
 
@@ -73,7 +67,7 @@ let g:haskell_enable_typeroles = 1
 " }}}
 " }}}
 
-" {{{ Tab settings
+"{{{ Tab settings
 set softtabstop=4
 set shiftwidth=4
 set tabstop=4
@@ -120,5 +114,19 @@ nmap <C-j> ]e
 " Bubble multiple lines
 vmap <C-k> [egv
 vmap <C-j> ]egv
+" }}}
+" {{{ Highlight unwanted spaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+" }}}
+" {{{ icelight
+inoremap <A-l> <C-v>u3bb<Space>
+inoremap <A-f> <C-v>u192<Space>
+inoremap <A-h> <C-v>u3b1<Space>
+inoremap <A-t> <C-v>u3c9<Space>
 " }}}
 " }}}
