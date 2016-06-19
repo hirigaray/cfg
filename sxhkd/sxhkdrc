@@ -13,35 +13,35 @@ Pause
 
 # Window management hotkeys
 
-super + {g, q, f}
-	{centerw, killwa, zoomw} $(pfw)
+super + {q, f}
+	{killwa, zoomw} $(pfw)
 
 super + Tab
 	focusw next
 
 super + KP_{Home,Prior,End,Next}
-	cornerw {tl,tr,bl,br}
+	movew {tl,tr,bl,br}
+
+super + g
+	movew cs
 
 super + {h,j,k,l}
-	wmv {-6 0,0 +12, 0 -12, +6 0} $(pfw)
+	wmv {-17 0,0 +17, 0 -17, +17 0} $(pfw)
 
 super + shift + {h,j,k,l}
-	wrs {-6 0,0 +12, 0 -12, +6 0} $(pfw)
+	wrs {-17 0,0 +17, 0 -17, +17 0} $(pfw)
 
 super + control + {h,j,k,l}
-	wmv {-12 0,0 +24, 0 -24, +12 0} $(pfw)
+	wmv {-17 0,0 +34, 0 -34, +17 0} $(pfw)
 
 super + shift + control + {h,j,k,l}
-	wrs {-12 0,0 +24, 0 -24, +12 0} $(pfw)
+	wrs {-17 0,0 +34, 0 -34, +17 0} $(pfw)
 
 super + {1,2,3,4,5,6}
-	wm -t {1,2,3,4,5,6}
+	wsm toggle {1,2,3,4,5,6}
 
 super + shift + {1,2,3,4,5,6}
-	wm -a {1,2,3,4,5,6}
-
-super + !button1
-	wmv -a %i %i $(pfw)
+	wsm add {1,2,3,4,5,6}
 
 # Reload configuration
 super + Escape
