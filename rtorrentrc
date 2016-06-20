@@ -1,0 +1,14 @@
+## Files.
+directory = /home/kori/Downloads
+session = /home/kori/local/var/rtorrent
+
+## Disable DHT and peer exchange.
+dht = disable
+peer_exchange = no
+
+## Encryption.
+encryption = allow_incoming,try_outgoing,enable_retry
+
+# Watch a directory for new torrents, and stop those that have been
+# deleted.
+schedule = watch_directory,5,5,load_start=/home/kori/Downloads/*.torrent
