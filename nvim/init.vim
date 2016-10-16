@@ -15,6 +15,16 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 	Plug 'kovisoft/paredit'
 	let g:paredit_electric_return=0
 	autocmd FileType scheme setlocal expandtab shiftwidth=2 softtabstop=2
+	autocmd FileType scheme hi Delimiter ctermfg=black
+	autocmd FileType scheme hi MatchParen ctermfg=darkmagenta
+" }}}
+" {{{ racket
+	Plug 'wlangstroth/vim-racket'
+" }}}
+" {{{ clojure
+	Plug 'guns/vim-clojure-static'
+	let g:clojure_align_multiline_strings = 1
+	let g:clojure_align_subforms = 1
 " }}}
 " {{{ haskell
 	Plug 'neovimhaskell/haskell-vim'
@@ -27,6 +37,9 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " }}}
 " {{{ rust
 	Plug 'rust-lang/rust.vim'
+" }}}
+" {{{ go
+	Plug 'fatih/vim-go'
 " }}}
 " }}}
 

@@ -20,10 +20,10 @@ super + Tab
 	focusw next
 
 super + KP_{Home,Prior,End,Next}
-	movew {tl,tr,bl,br}
+	movew {topLeft,topRight,bottomLeft,bottomRight}
 
 super + g
-	movew cs
+	movew centerScreen
 
 super + {h,j,k,l}
 	wmv {-17 0,0 +17, 0 -17, +17 0} $(pfw)
@@ -37,11 +37,15 @@ super + control + {h,j,k,l}
 super + shift + control + {h,j,k,l}
 	wrs {-17 0,0 +34, 0 -34, +17 0} $(pfw)
 
-super + {1,2,3,4,5,6}
-	wsm toggle {1,2,3,4,5,6}
+super + {1,2,3,4,5}
+	gm single {1,2,3,4,5}
 
-super + shift + {1,2,3,4,5,6}
-	wsm add {1,2,3,4,5,6}
+super + {F1,F2,F3,F4,F5}
+	gm toggle {1,2,3,4,5}
+
+super + shift + {1,2,3,4,5}
+	gm add {1,2,3,4,5}
+
 
 # Reload configuration
 super + Escape
