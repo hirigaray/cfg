@@ -17,7 +17,7 @@ foreground = "#8c5780"
 timeout = 0
 
 [global]
-font = Nimbus Sans L 11
+font = Clear Sans 12
 sort = yes
 indicate_hidden = yes
 
@@ -33,7 +33,7 @@ word_wrap = yes
 ignore_newline = no
 
 # geometry of window. format: (width)x(height)+/-(x)+/-(y)
-geometry = "256x48+1628+60"
+geometry = "256x48+1628+68"
 
 # the transparency of the window
 transparency = 10

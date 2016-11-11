@@ -1,6 +1,7 @@
 ## Files.
 directory = /home/kori/Downloads
 session = /home/kori/local/var/rtorrent
+check_hash = yes
 
 ## Disable DHT and peer exchange.
 dht = disable
@@ -9,6 +10,11 @@ peer_exchange = no
 ## Encryption.
 encryption = allow_incoming,try_outgoing,enable_retry
 
-# Watch a directory for new torrents, and stop those that have been
-# deleted.
-schedule = watch_directory,5,5,load_start=/home/kori/Downloads/*.torrent
+# Watch a directory for new torrents
+schedule = watch_directory,5,5,"load_start=/home/kori/Downloads/*.torrent,d.set_storage=/home/kori/Downloads/Storage"
+
+system.method.insert=checkdirs,simple,"not=\"$equal={d.get_storage=,d.get_base_path=}\""
+system.method.insert=movecheck,simple,"and={checkdirs1=,d.get_complete=,d.get_storage=}"
+system.method.insert=movedir,simple,"d.set_directory=$d.get_storage=;execute=mv,-u,$d.get_base_path=,$d.get_storage=;d.set_storage=;d.stop=;d.start="
+
+system.method.set_key=event.download.hash_done,move_hashed,"branch={$movecheck1=,movedir=}"

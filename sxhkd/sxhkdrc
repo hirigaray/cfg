@@ -19,23 +19,23 @@ super + {q, f}
 super + Tab
 	focusw next
 
-super + KP_{Home,Prior,End,Next}
-	movew {topLeft,topRight,bottomLeft,bottomRight}
+super + KP_{Home,Prior,End,Next,Left,Up,Down,Right}
+	movew {topLeft,topRight,bottomLeft,bottomRight,centerLeft,centerTop,centerBottom,centerRight} $(pfw)
 
 super + g
-	movew centerScreen
+	movew centerScreen $(pfw)
 
 super + {h,j,k,l}
-	wmv {-17 0,0 +17, 0 -17, +17 0} $(pfw)
+	wmv {-14 0,0 +17, 0 -17, +14 0} $(pfw)
 
 super + shift + {h,j,k,l}
-	wrs {-17 0,0 +17, 0 -17, +17 0} $(pfw)
+	wrs {-14 0,0 +17, 0 -17, +14 0} $(pfw)
 
 super + control + {h,j,k,l}
-	wmv {-17 0,0 +34, 0 -34, +17 0} $(pfw)
+	wmv {-28 0,0 +34, 0 -34, +28 0} $(pfw)
 
 super + shift + control + {h,j,k,l}
-	wrs {-17 0,0 +34, 0 -34, +17 0} $(pfw)
+	wrs {-28 0,0 +34, 0 -34, +28 0} $(pfw)
 
 super + {1,2,3,4,5}
 	gm single {1,2,3,4,5}

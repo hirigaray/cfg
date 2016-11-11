@@ -41,6 +41,9 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " {{{ go
 	Plug 'fatih/vim-go'
 " }}}
+" {{{ sxhkd
+	Plug 'baskerville/vim-sxhkdrc'
+" }}}
 " }}}
 
 " {{{ extra editing helpers
