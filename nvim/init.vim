@@ -7,7 +7,7 @@ let mapleader = "\<Space>"
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " {{{ Plug itself and colorscheme
 	Plug 'junegunn/vim-plug'
-	Plug 'kori/term.vim'
+	Plug 'kori/vim-diesel'
 " }}}
 
 " {{{ Language support
@@ -36,7 +36,7 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " {{{ Go
 	Plug 'fatih/vim-go'
 " }}}
-" {{{ misc
+" {{{ Miscellaneous
 	Plug 'cespare/vim-toml'        " toml
 	Plug 'baskerville/vim-sxhkdrc' " sxhkdrc
 
@@ -84,7 +84,7 @@ call plug#end()
 "{{{ General settings
 "{{{ Visual settings
 	syntax on
-	colors term
+	colors diesel
 
 	set cursorline
 	set number
