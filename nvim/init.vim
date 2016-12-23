@@ -30,16 +30,13 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " {{{ Elixir
 	Plug 'elixir-lang/vim-elixir'
 " }}}
-" {{{ Rust
-	Plug 'rust-lang/rust.vim'
-" }}}
 " {{{ Go
 	Plug 'fatih/vim-go'
 " }}}
 " {{{ Miscellaneous
 	Plug 'cespare/vim-toml'        " toml
 	Plug 'baskerville/vim-sxhkdrc' " sxhkdrc
-
+	Plug 'neovim/node-host'        " for parinfer
 " }}}
 " }}}
 
