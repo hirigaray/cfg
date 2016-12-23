@@ -20,22 +20,22 @@ super + Tab
 	focusw next
 
 super + KP_{Home,Prior,End,Next,Left,Up,Down,Right}
-	teleportw {topLeft,topRight,bottomLeft,bottomRight,centerLeft,centerTop,centerBottom,centerRight} $(pfw)
+	movew {topLeft,topRight,bottomLeft,bottomRight,centerLeft,centerTop,centerBottom,centerRight} $(pfw)
 
 super + g
-	teleportw centerScreen $(pfw)
+	movew centerScreen $(pfw)
 
 super + {h,j,k,l}
-	movew {left,up,down,right} $(pfw)
+	wmv {-14 0,0 +17, 0 -17, +14 0} $(pfw)
 
 super + shift + {h,j,k,l}
-	resizew {shrinkRight,growBottom,shrinkBottom,growRight} $(pfw)
+	wrs {-14 0,0 +17, 0 -17, +14 0} $(pfw)
 
 super + control + {h,j,k,l}
-	movew double{Left,Up,Down,Right} $(pfw)
+	wmv {-28 0,0 +34, 0 -34, +28 0} $(pfw)
 
 super + shift + control + {h,j,k,l}
-	resizew double{ShrinkRight,GrowBottom,ShrinkBottom,GrowRight} $(pfw)
+	wrs {-28 0,0 +34, 0 -34, +28 0} $(pfw)
 
 super + {1,2,3,4,5}
 	gm single {1,2,3,4,5}

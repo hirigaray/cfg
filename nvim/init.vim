@@ -5,53 +5,51 @@ let mapleader = "\<Space>"
 
 " {{{ Plugins
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
-" {{{ plug itself and colorscheme
+" {{{ Plug itself and colorscheme
 	Plug 'junegunn/vim-plug'
 	Plug 'kori/term.vim'
 " }}}
 
-" {{{ language support
-" {{{ scheme
+" {{{ Language support
+" {{{ Scheme
 	Plug 'kovisoft/paredit'
 	let g:paredit_electric_return=0
 	autocmd FileType scheme setlocal expandtab shiftwidth=2 softtabstop=2
 	autocmd FileType scheme hi Delimiter ctermfg=black
 	autocmd FileType scheme hi MatchParen ctermfg=darkmagenta
 " }}}
-" {{{ racket
+" {{{ Clojure
+	Plug 'tpope/vim-fireplace'
+" }}}
+" {{{ Racket
 	Plug 'wlangstroth/vim-racket'
 " }}}
-" {{{ clojure
-	Plug 'guns/vim-clojure-static'
-	let g:clojure_align_multiline_strings = 1
-	let g:clojure_align_subforms = 1
-" }}}
-" {{{ haskell
+" {{{ Haskell
 	Plug 'neovimhaskell/haskell-vim'
 " }}}
-" {{{ elixir
+" {{{ Elixir
 	Plug 'elixir-lang/vim-elixir'
 " }}}
-" {{{ toml
-	Plug 'cespare/vim-toml'
-" }}}
-" {{{ rust
+" {{{ Rust
 	Plug 'rust-lang/rust.vim'
 " }}}
-" {{{ go
+" {{{ Go
 	Plug 'fatih/vim-go'
 " }}}
-" {{{ sxhkd
-	Plug 'baskerville/vim-sxhkdrc'
+" {{{ misc
+	Plug 'cespare/vim-toml'        " toml
+	Plug 'baskerville/vim-sxhkdrc' " sxhkdrc
+
 " }}}
 " }}}
 
-" {{{ extra editing helpers
+" {{{ Extra editing helpers
 	Plug 'tpope/vim-unimpaired'
 	Plug 'tpope/vim-surround'
 	Plug 'easymotion/vim-easymotion'
 	Plug 'ap/vim-css-color'
 " }}}
+
 call plug#end()
 
 " {{{ Plugin settings
@@ -83,12 +81,7 @@ call plug#end()
 " }}}
 " }}}
 
-"{{{ Tab settings
-	set softtabstop=4
-	set shiftwidth=4
-	set tabstop=4
-" }}}
-
+"{{{ General settings
 "{{{ Visual settings
 	syntax on
 	colors term
@@ -101,11 +94,18 @@ call plug#end()
 	set listchars=tab:›\ 
 " }}}
 
+"{{{ Tab settings
+	set softtabstop=4
+	set shiftwidth=4
+	set tabstop=4
+" }}}
+" }}}
+
 " {{{ Fold settings
 	set foldmethod=marker
 " }}}
 
-" {{{ Things I don't use
+"{{{ Things I don't use
 	set mouse=v
 	let s:cfghome = $XDG_CONFIG_HOME
 	execute 'set directory=' . s:cfghome . '/nvim/useless/swap/'
@@ -138,11 +138,5 @@ call plug#end()
 	autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 	autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 	autocmd BufWinLeave * call clearmatches()
-" }}}
-" {{{ icelight
-	inoremap <A-l> <C-v>u3bb<Space>
-	inoremap <A-f> <C-v>u192<Space>
-	inoremap <A-h> <C-v>u3b1<Space>
-	inoremap <A-t> <C-v>u3c9<Space>
 " }}}
 " }}}
