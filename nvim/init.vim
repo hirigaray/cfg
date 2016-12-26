@@ -9,11 +9,10 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 	Plug 'junegunn/vim-plug'
 	Plug 'kori/vim-diesel'
 " }}}
-
 " {{{ Language support
 " {{{ Scheme
-	Plug 'kovisoft/paredit'
-	let g:paredit_electric_return=0
+	Plug 'neovim/node-host' " for parinfer
+	Plug 'snoe/nvim-parinfer.js'
 	autocmd FileType scheme setlocal expandtab shiftwidth=2 softtabstop=2
 	autocmd FileType scheme hi Delimiter ctermfg=black
 	autocmd FileType scheme hi MatchParen ctermfg=darkmagenta
@@ -36,17 +35,14 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " {{{ Miscellaneous
 	Plug 'cespare/vim-toml'        " toml
 	Plug 'baskerville/vim-sxhkdrc' " sxhkdrc
-	Plug 'neovim/node-host'        " for parinfer
 " }}}
 " }}}
-
 " {{{ Extra editing helpers
 	Plug 'tpope/vim-unimpaired'
 	Plug 'tpope/vim-surround'
 	Plug 'easymotion/vim-easymotion'
 	Plug 'ap/vim-css-color'
 " }}}
-
 call plug#end()
 
 " {{{ Plugin settings
@@ -73,7 +69,7 @@ call plug#end()
 	hi link EasyMotionShade Comment
 	hi link EasyMotionTarget Search
 	hi link EasyMotionMoveHL Search
-	hi link EasyMotionHL Search
+	hi EasyMotionIncSearch ctermfg=2
 " }}}
 " }}}
 " }}}
@@ -90,7 +86,6 @@ call plug#end()
 	set list
 	set listchars=tab:›\ 
 " }}}
-
 "{{{ Tab settings
 	set softtabstop=4
 	set shiftwidth=4
@@ -111,7 +106,7 @@ call plug#end()
 " }}}
 
 " {{{ Custom additions
-" {{{ highlight files
+" {{{ Highlight files
 	au BufNewFile,BufRead *Pkgfile set filetype=sh " Pkgfile
 " }}}
 " {{{ Set cursor to last known position
