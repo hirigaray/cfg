@@ -10,9 +10,10 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 	Plug 'kori/vim-diesel'
 " }}}
 " {{{ Language support
+" {{{ Lisp
 " {{{ Scheme
-	Plug 'neovim/node-host' " for parinfer
-	Plug 'snoe/nvim-parinfer.js'
+	Plug 'kovisoft/paredit'
+	let g:paredit_electric_return=0
 	autocmd FileType scheme setlocal expandtab shiftwidth=2 softtabstop=2
 	autocmd FileType scheme hi Delimiter ctermfg=black
 	autocmd FileType scheme hi MatchParen ctermfg=darkmagenta
@@ -23,8 +24,6 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " {{{ Racket
 	Plug 'wlangstroth/vim-racket'
 " }}}
-" {{{ Haskell
-	Plug 'neovimhaskell/haskell-vim'
 " }}}
 " {{{ Elixir
 	Plug 'elixir-lang/vim-elixir'
