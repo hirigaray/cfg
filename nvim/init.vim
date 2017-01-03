@@ -37,6 +37,7 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " }}}
 " }}}
 " {{{ Extra editing helpers
+	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-unimpaired'
 	Plug 'tpope/vim-surround'
 	Plug 'easymotion/vim-easymotion'
