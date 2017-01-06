@@ -63,6 +63,9 @@ call plug#end()
 	hi link EasyMotionMoveHL Search
 	hi EasyMotionIncSearch ctermfg=2
 " }}}
+" {{{ vim-commentary
+	autocmd FileType racket setlocal commentstring=;\ %s
+" }}}
 " }}}
 " }}}
 
