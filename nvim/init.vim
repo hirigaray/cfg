@@ -31,6 +31,9 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " {{{ Go
 	Plug 'fatih/vim-go'
 " }}}
+" {{{ Javascript
+	Plug 'pangloss/vim-javascript'
+" }}}
 " {{{ Miscellaneous
 	Plug 'cespare/vim-toml'        " toml
 	Plug 'baskerville/vim-sxhkdrc' " sxhkdrc
@@ -38,6 +41,7 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " }}}
 " {{{ Extra editing helpers
 	Plug 'tpope/vim-commentary'
+	Plug 'justinmk/vim-sneak'
 	Plug 'tpope/vim-unimpaired'
 	Plug 'tpope/vim-surround'
 	Plug 'easymotion/vim-easymotion'
@@ -65,6 +69,11 @@ call plug#end()
 " }}}
 " {{{ vim-commentary
 	autocmd FileType racket setlocal commentstring=;\ %s
+" }}}
+" {{{ vim-sneak
+	let g:sneak#label = 1
+	autocmd Colorscheme * hi Sneak ctermbg=none ctermfg=15
+	autocmd Colorscheme * hi SneakScope ctermbg=none ctermfg=0
 " }}}
 " }}}
 " }}}
