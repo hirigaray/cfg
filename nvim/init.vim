@@ -11,9 +11,9 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " }}}
 " {{{ Language support
 " {{{ Lisp
-" {{{ Scheme
 	Plug 'kovisoft/paredit'
 	let g:paredit_electric_return=0
+" {{{ Scheme
 	autocmd FileType scheme setlocal expandtab shiftwidth=2 softtabstop=2
 	autocmd FileType scheme hi Delimiter ctermfg=black
 	autocmd FileType scheme hi MatchParen ctermfg=darkmagenta
@@ -25,11 +25,11 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 	Plug 'wlangstroth/vim-racket'
 " }}}
 " }}}
-" {{{ Elixir
-	Plug 'elixir-lang/vim-elixir'
-" }}}
 " {{{ Go
 	Plug 'fatih/vim-go'
+" }}}
+" {{{ Elixir
+	Plug 'elixir-lang/vim-elixir'
 " }}}
 " {{{ Javascript
 	Plug 'pangloss/vim-javascript'
