@@ -24,6 +24,9 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " {{{ Racket
 	Plug 'wlangstroth/vim-racket'
 " }}}
+" {{{ Shen
+	Plug 'nimaai/vim-shen'
+" }}}
 " }}}
 " {{{ Go
 	Plug 'fatih/vim-go'
@@ -38,10 +41,8 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 	Plug 'cespare/vim-toml'        " toml
 	Plug 'baskerville/vim-sxhkdrc' " sxhkdrc
 " }}}
-" }}}
 " {{{ Extra editing helpers
 	Plug 'tpope/vim-commentary'
-	Plug 'justinmk/vim-sneak'
 	Plug 'tpope/vim-unimpaired'
 	Plug 'tpope/vim-surround'
 	Plug 'easymotion/vim-easymotion'
@@ -74,6 +75,7 @@ call plug#end()
 	let g:sneak#label = 1
 	autocmd Colorscheme * hi Sneak ctermbg=none ctermfg=15
 	autocmd Colorscheme * hi SneakScope ctermbg=none ctermfg=0
+" }}}
 " }}}
 " }}}
 " }}}
@@ -111,7 +113,8 @@ call plug#end()
 
 " {{{ Custom additions
 " {{{ Highlight files
-	au BufNewFile,BufRead *Pkgfile set filetype=sh " Pkgfile
+	au BufNewFile,BufRead *Pkgfile set filetype=sh
+	au BufNewFile,BufRead *Vagrantfile set filetype=ruby
 " }}}
 " {{{ Set cursor to last known position
 	autocmd BufReadPost *
