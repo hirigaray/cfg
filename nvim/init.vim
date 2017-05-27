@@ -13,20 +13,22 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " {{{ Lisp
 	Plug 'kovisoft/paredit'
 	let g:paredit_electric_return=0
-" {{{ Scheme
-	autocmd FileType scheme setlocal expandtab shiftwidth=2 softtabstop=2
-	autocmd FileType scheme hi Delimiter ctermfg=black
-	autocmd FileType scheme hi MatchParen ctermfg=darkmagenta
-" }}}
-" {{{ Clojure
-	Plug 'tpope/vim-fireplace'
-" }}}
-" {{{ Racket
-	Plug 'wlangstroth/vim-racket'
-" }}}
-" {{{ Shen
-	Plug 'nimaai/vim-shen'
-" }}}
+	" {{{ Scheme
+		autocmd FileType scheme setlocal expandtab shiftwidth=2 softtabstop=2
+		autocmd FileType scheme hi Delimiter ctermfg=black
+		autocmd FileType scheme hi MatchParen ctermfg=darkmagenta
+	" }}}
+	" {{{ Clojure
+		Plug 'tpope/vim-fireplace'
+		Plug 'tpope/vim-salve'
+		Plug 'tpope/vim-classpath'
+	" }}}
+	" {{{ Racket
+		Plug 'wlangstroth/vim-racket'
+	" }}}
+	" {{{ Shen
+		Plug 'nimaai/vim-shen'
+	" }}}
 " }}}
 " {{{ Go
 	Plug 'fatih/vim-go'
@@ -36,6 +38,9 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " }}}
 " {{{ Javascript
 	Plug 'pangloss/vim-javascript'
+" }}}
+" {{{ Red
+	Plug 'Prosumma/vim-rebol'
 " }}}
 " {{{ Miscellaneous
 	Plug 'cespare/vim-toml'        " toml
@@ -70,6 +75,7 @@ call plug#end()
 " }}}
 " {{{ vim-commentary
 	autocmd FileType racket setlocal commentstring=;\ %s
+	autocmd FileType rebol setlocal commentstring=;\ %s
 " }}}
 " {{{ vim-sneak
 	let g:sneak#label = 1
@@ -108,12 +114,13 @@ call plug#end()
 	let s:cfghome = $XDG_CONFIG_HOME
 	execute 'set directory=' . s:cfghome . '/nvim/useless/swap/'
 	execute 'set backupdir=' . s:cfghome . '/nvim/useless/bkp/'
-	execute 'set undodir=' . s:cfghome . '/nvim/useless/undo/'
+	execute 'set undodir='   . s:cfghome . '/nvim/useless/undo/'
 " }}}
 
 " {{{ Custom additions
 " {{{ Highlight files
 	au BufNewFile,BufRead *Pkgfile set filetype=sh
+	au BufNewFile,BufRead *red set filetype=rebol
 	au BufNewFile,BufRead *Vagrantfile set filetype=ruby
 " }}}
 " {{{ Set cursor to last known position
