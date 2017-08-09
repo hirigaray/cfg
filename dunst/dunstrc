@@ -33,7 +33,7 @@ word_wrap = yes
 ignore_newline = no
 
 # geometry of window. format: (width)x(height)+/-(x)+/-(y)
-geometry = "256x48+1628+68"
+geometry = "256x48+1626+68"
 
 # the transparency of the window
 transparency = 10

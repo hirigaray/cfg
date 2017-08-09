@@ -8,6 +8,10 @@
 " parsing the complete system of Scheme numerals using the pattern
 " language is practically impossible: I did a lax approximation.
 
+" MzScheme extensions can be activated with setting is_mzscheme variable
+
+" Suggestions and bug reports are solicited by the author.
+
 " Initializing:
 
 " For version 5.x: Clear all syntax items
@@ -185,6 +189,77 @@ syn match	schemeError	!#\\newline[^ \t\[\]()";]\+!
 syn match schemeCharacter "#\\x[0-9a-fA-F]\+"
 
 
+if exists("b:is_mzscheme") || exists("is_mzscheme")
+    " MzScheme extensions
+    " multiline comment
+    syn region	schemeComment start="#|" end="|#" contains=@Spell
+
+    " #%xxx are the special MzScheme identifiers
+    syn match schemeOther "#%[-a-z!$%&*/:<=>?^_~0-9+.@#%]\+"
+    " anything limited by |'s is identifier
+    syn match schemeOther "|[^|]\+|"
+
+    syn match	schemeCharacter	"#\\\%(return\|tab\)"
+
+    " Modules require stmt
+    syn keyword schemeExtSyntax module require dynamic-require lib prefix all-except prefix-all-except rename
+    " modules provide stmt
+    syn keyword schemeExtSyntax provide struct all-from all-from-except all-defined all-defined-except
+    " Other from MzScheme
+    syn keyword schemeExtSyntax with-handlers when unless instantiate define-struct case-lambda syntax-case
+    syn keyword schemeExtSyntax free-identifier=? bound-identifier=? module-identifier=? syntax-object->datum
+    syn keyword schemeExtSyntax datum->syntax-object
+    syn keyword schemeExtSyntax let-values let*-values letrec-values set!-values fluid-let parameterize begin0
+    syn keyword schemeExtSyntax error raise opt-lambda define-values unit unit/sig define-signature
+    syn keyword schemeExtSyntax invoke-unit/sig define-values/invoke-unit/sig compound-unit/sig import export
+    syn keyword schemeExtSyntax link syntax quasisyntax unsyntax with-syntax
+
+    syn keyword schemeExtFunc format system-type current-extension-compiler current-extension-linker
+    syn keyword schemeExtFunc use-standard-linker use-standard-compiler
+    syn keyword schemeExtFunc find-executable-path append-object-suffix append-extension-suffix
+    syn keyword schemeExtFunc current-library-collection-paths current-extension-compiler-flags make-parameter
+    syn keyword schemeExtFunc current-directory build-path normalize-path current-extension-linker-flags
+    syn keyword schemeExtFunc file-exists? directory-exists? delete-directory/files delete-directory delete-file
+    syn keyword schemeExtFunc system compile-file system-library-subpath getenv putenv current-standard-link-libraries
+    syn keyword schemeExtFunc remove* file-size find-files fold-files directory-list shell-execute split-path
+    syn keyword schemeExtFunc current-error-port process/ports process printf fprintf open-input-string open-output-string
+    syn keyword schemeExtFunc get-output-string
+    " exceptions
+    syn keyword schemeExtFunc exn exn:application:arity exn:application:continuation exn:application:fprintf:mismatch
+    syn keyword schemeExtFunc exn:application:mismatch exn:application:type exn:application:mismatch exn:break exn:i/o:filesystem exn:i/o:port
+    syn keyword schemeExtFunc exn:i/o:port:closed exn:i/o:tcp exn:i/o:udp exn:misc exn:misc:application exn:misc:unsupported exn:module exn:read
+    syn keyword schemeExtFunc exn:read:non-char exn:special-comment exn:syntax exn:thread exn:user exn:variable exn:application:mismatch
+    syn keyword schemeExtFunc exn? exn:application:arity? exn:application:continuation? exn:application:fprintf:mismatch? exn:application:mismatch?
+    syn keyword schemeExtFunc exn:application:type? exn:application:mismatch? exn:break? exn:i/o:filesystem? exn:i/o:port? exn:i/o:port:closed?
+    syn keyword schemeExtFunc exn:i/o:tcp? exn:i/o:udp? exn:misc? exn:misc:application? exn:misc:unsupported? exn:module? exn:read? exn:read:non-char?
+    syn keyword schemeExtFunc exn:special-comment? exn:syntax? exn:thread? exn:user? exn:variable? exn:application:mismatch?
+    " Command-line parsing
+    syn keyword schemeExtFunc command-line current-command-line-arguments once-any help-labels multi once-each
+
+    " syntax quoting, unquoting and quasiquotation
+    syn region schemeUnquote matchgroup=Delimiter start="#," end=![ \t\[\]()";]!me=e-1 contains=ALL
+    syn region schemeUnquote matchgroup=Delimiter start="#,@" end=![ \t\[\]()";]!me=e-1 contains=ALL
+    syn region schemeUnquote matchgroup=Delimiter start="#,(" end=")" contains=ALL
+    syn region schemeUnquote matchgroup=Delimiter start="#,@(" end=")" contains=ALL
+    syn region schemeUnquote matchgroup=Delimiter start="#,\[" end="\]" contains=ALL
+    syn region schemeUnquote matchgroup=Delimiter start="#,@\[" end="\]" contains=ALL
+    syn region schemeQuoted matchgroup=Delimiter start="#['`]" end=![ \t()\[\]";]!me=e-1 contains=ALL
+    syn region schemeQuoted matchgroup=Delimiter start="#['`](" matchgroup=Delimiter end=")" contains=ALL
+
+    " Identifiers are very liberal in MzScheme/Racket
+    syn match schemeOther ![^()[\]{}",'`;#|\\ ]\+!
+
+    " Language setting
+    syn match schemeLang "#lang [-+_/A-Za-z0-9]\+\>"
+
+    " Various number forms
+    syn match schemeNumber "[-+]\=[0-9]\+\(\.[0-9]*\)\=\(e[-+]\=[0-9]\+\)\=\>"
+    syn match schemeNumber "[-+]\=\.[0-9]\+\(e[-+]\=[0-9]\+\)\=\>"
+    syn match schemeNumber "[-+]\=[0-9]\+/[0-9]\+\>"
+    syn match schemeNumber "\([-+]\=\([0-9]\+\(\.[0-9]*\)\=\(e[-+]\=[0-9]\+\)\=\|\.[0-9]\+\(e[-+]\=[0-9]\+\)\=\|[0-9]\+/[0-9]\+\)\)\=[-+]\([0-9]\+\(\.[0-9]*\)\=\(e[-+]\=[0-9]\+\)\=\|\.[0-9]\+\(e[-+]\=[0-9]\+\)\=\|[0-9]\+/[0-9]\+\)\=i\>"
+endif
+
+
 if exists("b:is_chicken") || exists("is_chicken")
     " multiline comment
     syntax region schemeMultilineComment start=/#|/ end=/|#/ contains=@Spell,schemeMultilineComment
@@ -241,25 +316,25 @@ if version >= 508 || !exists("did_scheme_syntax_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
-  HiLink schemeSyntax    Statement
-  HiLink schemeFunc      Function
+  HiLink schemeSyntax		Statement
+  HiLink schemeFunc		Function
 
-  HiLink schemeString    String
-  HiLink schemeCharacter Character
-  HiLink schemeNumber    Number
-  HiLink schemeBoolean   Boolean
-  HiLink schemeQuoted    String
+  HiLink schemeString		String
+  HiLink schemeCharacter	Character
+  HiLink schemeNumber		Number
+  HiLink schemeBoolean		Boolean
 
-  HiLink schemeDelimiter Delimiter
-  HiLink schemeConstant  Constant
+  HiLink schemeDelimiter	Delimiter
+  HiLink schemeConstant		Constant
 
-  HiLink schemeComment   Comment
-  HiLink schemeError     Error
+  HiLink schemeComment		Comment
+  HiLink schemeMultilineComment	Comment
+  HiLink schemeError		Error
 
-  HiLink schemeExtSyntax  Type
-  HiLink schemeExtFunc    PreProc
+  HiLink schemeExtSyntax	Type
+  HiLink schemeExtFunc		PreProc
 
-  HiLink schemeLang       PreProc
+  HiLink schemeLang		PreProc
 
   delcommand HiLink
 endif

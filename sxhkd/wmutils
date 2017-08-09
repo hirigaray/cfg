@@ -1,0 +1,52 @@
+# General hotkeys
+super + Return
+	st
+
+super + {r,p}
+	{run,passmenu}
+
+super + {s,v}
+	launchwith {surf,mpv}
+
+Pause
+	slock
+
+# Window management hotkeys
+
+super + {q, f}
+	{killwa, zoomw} $(pfw)
+
+super + Tab
+	focusw next
+
+super + KP_{Home,Prior,End,Next,Left,Up,Down,Right}
+	teleportw {topLeft,topRight,bottomLeft,bottomRight,centerLeft,centerTop,centerBottom,centerRight} $(pfw)
+
+super + g
+	teleportw centerScreen $(pfw)
+
+super + {h,j,k,l}
+	movew {left,up,down,right} $(pfw)
+
+super + shift + {h,j,k,l}
+	resizew {shrinkRight,growBottom,shrinkBottom,growRight} $(pfw)
+
+super + control + {h,j,k,l}
+	movew double{Left,Up,Down,Right} $(pfw)
+
+super + shift + control + {h,j,k,l}
+	resizew double{ShrinkRight,GrowBottom,ShrinkBottom,GrowRight} $(pfw)
+
+super + {1,2,3,4,5}
+	gm single {1,2,3,4,5}
+
+super + {F1,F2,F3,F4,F5}
+	gm toggle {1,2,3,4,5}
+
+super + shift + {1,2,3,4,5}
+	gm add {1,2,3,4,5}
+
+
+# Reload configuration
+super + Escape
+    pkill -USR1 -x sxhkd

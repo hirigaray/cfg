@@ -46,6 +46,7 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 	Plug 'cespare/vim-toml'        " toml
 	Plug 'baskerville/vim-sxhkdrc' " sxhkdrc
 " }}}
+" }}}
 " {{{ Extra editing helpers
 	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-unimpaired'
@@ -84,7 +85,6 @@ call plug#end()
 " }}}
 " }}}
 " }}}
-" }}}
 
 "{{{ General settings
 "{{{ Visual settings
@@ -120,7 +120,7 @@ call plug#end()
 " {{{ Custom additions
 " {{{ Highlight files
 	au BufNewFile,BufRead *Pkgfile set filetype=sh
-	au BufNewFile,BufRead *red set filetype=rebol
+	au BufNewFile,BufRead *red set! filetype=rebol
 	au BufNewFile,BufRead *Vagrantfile set filetype=ruby
 " }}}
 " {{{ Set cursor to last known position

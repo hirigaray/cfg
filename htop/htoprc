@@ -22,5 +22,5 @@ color_scheme=3
 delay=15
 left_meters=AllCPUs 
 left_meter_modes=1 
-right_meters=Tasks LoadAverage Uptime Memory 
-right_meter_modes=2 2 2 1 
+right_meters=Tasks Uptime Memory Clock 
+right_meter_modes=2 2 1 2 

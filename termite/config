@@ -1,5 +1,5 @@
 [options]
-font = Fira Mono 9
+font = Iosevka 14
 scroll_on_output = false
 scroll_on_keystroke = true
 audible_bell = false
@@ -30,37 +30,77 @@ filter_unmatched_urls = true
 
 # emit escape sequences for extra modified keys
 #modify_other_keys = false
+
 [colors]
-foreground = #7c6b69
-background = #f6f6f2
-cursor = #7c6b69
-# if unset, will reverse foreground and background
-highlight = #7c6b69
-# colors from color0 to color254 can be set
-#black
-color0 = #474737
-color8 = #737474
-#red
-color1 = #7d5d4d
-color9 = #997f73
-#green
-color2 = #63884d
-color10 = #84a182
-#yellow
-color3 = #8f794d
-color11 = #a79673
-#blue
-color4 = #4d73aa
-color12 = #7391bc
-#magenta
-color5 = #624d8f
-color13 = #8473a7
-#cyan
-color6 = #4d9085
-color14 = #73a89f
-#white
-color7 = #abab99
-color15 = #cacabf
+
+# special
+foreground      = #809999
+foreground_bold = #809999
+cursor          = #809999
+background      = #1a1717
+
+# black
+color0  = #41414b
+color8  = #636373
+
+# red
+color1  = #994c55
+color9  = #bf5f6a
+
+# green
+color2  = #8f9967
+color10 = #b4c081
+
+# yellow
+color3  = #997e6a
+color11 = #bf9d84
+
+# blue
+color4  = #709984
+color12 = #8bbea4
+
+# magenta
+color5  = #996473
+color13 = #c07e90
+
+# cyan
+color6  = #8f998f
+color14 = #b4c0b4
+
+# white
+color7  = #999985
+color15 = #bfbea8
+# [colors]
+# foreground = #7c6b69
+# background = #f6f6f2
+# cursor = #7c6b69
+# # if unset, will reverse foreground and background
+# highlight = #7c6b69
+# # colors from color0 to color254 can be set
+# #black
+# color0 = #474737
+# color8 = #737474
+# #red
+# color1 = #7d5d4d
+# color9 = #997f73
+# #green
+# color2 = #63884d
+# color10 = #84a182
+# #yellow
+# color3 = #8f794d
+# color11 = #a79673
+# #blue
+# color4 = #4d73aa
+# color12 = #7391bc
+# #magenta
+# color5 = #624d8f
+# color13 = #8473a7
+# #cyan
+# color6 = #4d9085
+# color14 = #73a89f
+# #white
+# color7 = #abab99
+# color15 = #cacabf
 
 
 [hints]
