@@ -39,6 +39,7 @@ user-dirs.dirs
 user-dirs.locale
 vitetris
 weechat/fish.conf
+weechat/urlserver_list.txt
 weechat/irc.conf
 weechat/logs
 weechat/weechat.conf
