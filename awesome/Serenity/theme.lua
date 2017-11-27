@@ -56,7 +56,6 @@ theme.taglist_fg_occupied = "#839496"
 theme.menu_submenu_icon = ""
 theme.menu_height = dpi(20)
 theme.menu_width  = dpi(100)
-theme.menu_bg_normal = "#353540"
 theme.menu_border_width = 2
 
 -- You can add as many variables as
