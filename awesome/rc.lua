@@ -84,7 +84,8 @@ myawesomemenu = {
 
 mymainmenu = awful.menu(
 		{ items = { { "awesome", myawesomemenu, nil },
-					{ "term", terminal }}
+					{ "term", terminal },
+					{ "lock", "slock" }}
 					})
 
 -- Menubar configuration
@@ -290,10 +291,10 @@ clientkeys = gears.table.join(
 	awful.key({ modkey, }, "j", function(c) c:relative_move(0,18,0,0) awful.placement.no_offscreen(c) end),
 	awful.key({ modkey, }, "l", function(c) c:relative_move(18,0,0,0) awful.placement.no_offscreen(c) end),
 
-	awful.key({ modkey, "Shift" }, "h", function(c) c:relative_move(0,0,-6,0) awful.placement.no_offscreen(c) end),
-	awful.key({ modkey, "Shift" }, "k", function(c) c:relative_move(0,0,0,-12) awful.placement.no_offscreen(c) end),
-	awful.key({ modkey, "Shift" }, "j", function(c) c:relative_move(0,0,0,12) awful.placement.no_offscreen(c) end),
-	awful.key({ modkey, "Shift" }, "l", function(c) c:relative_move(0,0,6,0) awful.placement.no_offscreen(c) end)
+	awful.key({ modkey, "Shift" }, "h", function(c) c:relative_move(0,0,-12,0) awful.placement.no_offscreen(c) end),
+	awful.key({ modkey, "Shift" }, "k", function(c) c:relative_move(0,0,0,-22) awful.placement.no_offscreen(c) end),
+	awful.key({ modkey, "Shift" }, "j", function(c) c:relative_move(0,0,0,22) awful.placement.no_offscreen(c) end),
+	awful.key({ modkey, "Shift" }, "l", function(c) c:relative_move(0,0,12,0) awful.placement.no_offscreen(c) end)
 )
 
 -- Bind all key numbers to tags.
