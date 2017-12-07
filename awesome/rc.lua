@@ -219,7 +219,7 @@ globalkeys = gears.table.join(
 			  {description = "jump to urgent client", group = "client"}),
 	awful.key({ modkey,        }, "Tab",
 		function ()
-			awful.client.focus.byidx(-1)
+			awful.client.focus.byidx(1)
 				client.focus:raise()
 		end,
 		{description = "go back", group = "client"}),
@@ -290,8 +290,8 @@ clientkeys = gears.table.join(
 	awful.key({ modkey, }, "l", function(c) c:relative_move(18,0,0,0) awful.placement.no_offscreen(c) end),
 
 	awful.key({ modkey, "Shift" }, "h", function(c) c:relative_move(0,0,-12,0) awful.placement.no_offscreen(c) end),
-	awful.key({ modkey, "Shift" }, "k", function(c) c:relative_move(0,0,0,-22) awful.placement.no_offscreen(c) end),
-	awful.key({ modkey, "Shift" }, "j", function(c) c:relative_move(0,0,0,22) awful.placement.no_offscreen(c) end),
+	awful.key({ modkey, "Shift" }, "k", function(c) c:relative_move(0,0,0,-12) awful.placement.no_offscreen(c) end),
+	awful.key({ modkey, "Shift" }, "j", function(c) c:relative_move(0,0,0,12) awful.placement.no_offscreen(c) end),
 	awful.key({ modkey, "Shift" }, "l", function(c) c:relative_move(0,0,12,0) awful.placement.no_offscreen(c) end)
 )
 
@@ -422,6 +422,7 @@ client.connect_signal("mouse::enter", function(c)
 	if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
 		and awful.client.focus.filter(c) then
 		client.focus = c
+		c:raise()
 	end
 end)
 
