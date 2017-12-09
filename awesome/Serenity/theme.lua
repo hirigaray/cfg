@@ -41,7 +41,7 @@ theme.border_marked = "#91231c"
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
-theme.taglist_fg_empty = "#545466"
+theme.taglist_fg_empty = "#353540"
 theme.taglist_fg_occupied = "#839496"
 
 -- Variables set for theming notifications:
