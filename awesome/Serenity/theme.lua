@@ -11,7 +11,10 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "metis 8"
+-- theme.font          = "Clear Sans 12"
+theme.font          = "Work Sans Medium 11"
+-- theme.font          = "SF Pro Display 11"
+-- theme.font          = "metis 8"
 
 theme.bg_normal     = "#09090d"
 theme.bg_focus      = theme.bg_normal
@@ -63,7 +66,8 @@ theme.menu_border_width = 2
 -- beautiful.variable in your rc.lua
 --theme.bg_widget = "#cc0000"
 
-theme.wallpaper = "/home/kori/images/down.png"
+theme.wallpaper = "/home/kori/images/wallpapers/down.png"
+-- theme.wallpaper = nil
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
