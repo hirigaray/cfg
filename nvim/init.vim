@@ -39,9 +39,6 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " {{{ Javascript
 	Plug 'pangloss/vim-javascript'
 " }}}
-" {{{ Red
-	Plug 'Prosumma/vim-rebol'
-" }}}
 " {{{ Rust
 	Plug 'rust-lang/rust.vim'
 " }}}
@@ -81,13 +78,15 @@ let g:rustfmt_autosave = 1
 	hi link EasyMotionShade Comment
 	hi link EasyMotionTarget Search
 	hi link EasyMotionMoveHL Search
-	hi EasyMotionIncSearch ctermfg=2
+	hi EasyMotionIncSearch ctermfg=2 cterm=underline,italic
 " }}}
 " {{{ commentary
 	autocmd FileType racket setlocal commentstring=;\ %s
 	autocmd FileType rebol setlocal commentstring=;\ %s
 " }}}
 " {{{ sneak
+	map f <Plug>Sneak_s
+	map F <Plug>Sneak_S
 	let g:sneak#label = 1
 	autocmd Colorscheme * hi Sneak ctermbg=none ctermfg=15
 	autocmd Colorscheme * hi SneakScope ctermbg=none ctermfg=0
@@ -95,7 +94,7 @@ let g:rustfmt_autosave = 1
 " {{{ goyo
 let g:goyo_linenr = 1
 
-autocmd VimEnter * Goyo 80x100%
+" autocmd VimEnter * Goyo 80+0x100%+0
 
 function! s:goyo_enter()
   let b:quitting = 0
