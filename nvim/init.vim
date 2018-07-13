@@ -39,8 +39,8 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 " {{{ Javascript
 	Plug 'pangloss/vim-javascript'
 " }}}
-" {{{ Red
-	Plug 'Prosumma/vim-rebol'
+" {{{ Rust
+	Plug 'rust-lang/rust.vim'
 " }}}
 " {{{ Miscellaneous
 	Plug 'cespare/vim-toml'        " toml
@@ -53,35 +53,69 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 	Plug 'tpope/vim-surround'
 	Plug 'easymotion/vim-easymotion'
 	Plug 'ap/vim-css-color'
+	Plug 'junegunn/goyo.vim'
 " }}}
 call plug#end()
 
 " {{{ Plugin settings
+" {{{ rust.vim
+let g:rustfmt_autosave = 1
+" }}}
 " {{{ vim-go
 	let g:go_fmt_command = "goimports"
 	let g:go_highlight_build_constraints = 1
 	let g:go_highlight_operators = 1
 	let g:go_highlight_functions = 1
+	let g:go_highlight_function_arguments = 1
+	let g:go_highlight_function_calls = 1
 	let g:go_highlight_operators = 1
 	let g:go_highlight_methods = 1
 	let g:go_highlight_structs = 1
 " }}}
-" {{{ vim-easymotion
+" {{{ easymotion
 	map / <Plug>(easymotion-sn)
 	set hlsearch!
 	hi link EasyMotionShade Comment
 	hi link EasyMotionTarget Search
 	hi link EasyMotionMoveHL Search
-	hi EasyMotionIncSearch ctermfg=2
+	hi EasyMotionIncSearch ctermfg=2 cterm=underline,italic
 " }}}
-" {{{ vim-commentary
+" {{{ commentary
 	autocmd FileType racket setlocal commentstring=;\ %s
 	autocmd FileType rebol setlocal commentstring=;\ %s
 " }}}
-" {{{ vim-sneak
+" {{{ sneak
+	map f <Plug>Sneak_s
+	map F <Plug>Sneak_S
 	let g:sneak#label = 1
 	autocmd Colorscheme * hi Sneak ctermbg=none ctermfg=15
 	autocmd Colorscheme * hi SneakScope ctermbg=none ctermfg=0
+" }}}
+" {{{ goyo
+let g:goyo_linenr = 1
+
+" autocmd VimEnter * Goyo 80+0x100%+0
+
+function! s:goyo_enter()
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+endfunction
+
+function! s:goyo_leave()
+  " Quit Vim if this is the only remaining buffer
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang
+      qa!
+    else
+      qa
+    endif
+  endif
+endfunction
+
+autocmd! User GoyoEnter call <SID>goyo_enter()
+autocmd! User GoyoLeave call <SID>goyo_leave()
 " }}}
 " }}}
 " }}}
