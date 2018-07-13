@@ -14,7 +14,6 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
-
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -48,6 +47,10 @@ beautiful.init(awful.util.getdir("config") .. "/Serenity/theme.lua")
 terminal = "st"
 editor = os.getenv("EDITOR")
 editor_cmd = terminal .. " -e " .. editor
+
+-- notifications
+naughty.config.defaults['icon_size'] = 50
+
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -93,7 +96,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- {{{ Wibar
--- Create a textclock widget
+-- Create a textclock widgez
 mytextclock = wibox.widget.textclock("%A, %B %e, %T ", 1)
 
 -- Create a wibox for each screen and add it
@@ -159,7 +162,7 @@ awful.screen.connect_for_each_screen(function(s)
 	set_wallpaper(s)
 
 	-- Each screen has its own tag table.
-	awful.tag({ "☰", "☱", "☲", "☳", "☴", "☵", "☶", "☷" }, s, awful.layout.layouts[1])
+	awful.tag({ "term", "www", "code", "mail", "misc"}, s, awful.layout.layouts[1])
 
 	-- Create a promptbox for each screen
 	s.mypromptbox = awful.widget.prompt()
@@ -183,7 +186,6 @@ awful.screen.connect_for_each_screen(function(s)
 		},
 		{
 			layout = wibox.layout.flex.horizontal,
-			s.mytasklist,
 		},
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
@@ -289,11 +291,11 @@ clientkeys = gears.table.join(
 	awful.key({ modkey, }, "j", function(c) c:relative_move(0,18,0,0) awful.placement.no_offscreen(c) end),
 	awful.key({ modkey, }, "l", function(c) c:relative_move(18,0,0,0) awful.placement.no_offscreen(c) end),
 
-	awful.key({ modkey, "Shift" }, "h", function(c) c:relative_move(0,0,-12,0) awful.placement.no_offscreen(c) end),
+	awful.key({ modkey, "Shift" }, "h", function(c) c:relative_move(0,0,-6,0) awful.placement.no_offscreen(c) end),
 	awful.key({ modkey, "Shift" }, "k", function(c) c:relative_move(0,0,0,-12) awful.placement.no_offscreen(c) end),
 	awful.key({ modkey, "Shift" }, "j", function(c) c:relative_move(0,0,0,12) awful.placement.no_offscreen(c) end),
-	awful.key({ modkey, "Shift" }, "l", function(c) c:relative_move(0,0,12,0) awful.placement.no_offscreen(c) end)
-)
+	awful.key({ modkey, "Shift" }, "l", function(c) c:relative_move(0,0,6,0) awful.placement.no_offscreen(c) end),
+	awful.key({}, "XF86ScreenSaver", function() awful.spawn("slock") end ))
 
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
@@ -405,14 +407,16 @@ awful.rules.rules = {
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
+	-- Center new windows
+	awful.placement.centered(c)
+
 	-- Set the windows at the slave,
 	-- i.e. put it at the end of others instead of setting it master.
 	-- if not awesome.startup then awful.client.setslave(c) end
-
 	if awesome.startup and
 	  not c.size_hints.user_position
 	  and not c.size_hints.program_position then
-		-- Prevent clients from being unreachable after screen count changes.
+	-- Prevent clients from being unreachable after screen count changes.
 		awful.placement.no_offscreen(c)
 	end
 end)
