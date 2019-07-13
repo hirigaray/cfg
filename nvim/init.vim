@@ -26,34 +26,32 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 	" {{{ Racket
 		Plug 'wlangstroth/vim-racket'
 	" }}}
-	" {{{ Shen
-		Plug 'nimaai/vim-shen'
+	" {{{ Go
+		Plug 'fatih/vim-go'
 	" }}}
-" }}}
-" {{{ Go
-	Plug 'fatih/vim-go'
-" }}}
-" {{{ Elixir
-	Plug 'elixir-lang/vim-elixir'
-" }}}
-" {{{ Javascript
-	Plug 'pangloss/vim-javascript'
-" }}}
-" {{{ Rust
-	Plug 'rust-lang/rust.vim'
-" }}}
-" {{{ Miscellaneous
-	Plug 'cespare/vim-toml'        " toml
-	Plug 'baskerville/vim-sxhkdrc' " sxhkdrc
-" }}}
-" }}}
+	" {{{ Elixir
+		Plug 'elixir-lang/vim-elixir'
+	" }}}
+	" {{{ Javascript
+		Plug 'pangloss/vim-javascript'
+	" }}}
+	" {{{ Rust
+		Plug 'rust-lang/rust.vim'
+	" }}}
+	" {{{ Miscellaneous
+		Plug 'cespare/vim-toml'        " toml
+		Plug 'baskerville/vim-sxhkdrc' " sxhkdrc
+		Plug 'ekalinin/Dockerfile.vim' " Dockerfile
+		autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2 " YAML
+	" }}}
+	" }}}
 " {{{ Extra editing helpers
-	Plug 'tpope/vim-commentary'
-	Plug 'tpope/vim-unimpaired'
-	Plug 'tpope/vim-surround'
-	Plug 'easymotion/vim-easymotion'
-	Plug 'ap/vim-css-color'
-	Plug 'junegunn/goyo.vim'
+		Plug 'tpope/vim-commentary'
+		Plug 'tpope/vim-unimpaired'
+		Plug 'tpope/vim-surround'
+		Plug 'easymotion/vim-easymotion'
+		Plug 'ap/vim-css-color'
+		Plug 'junegunn/goyo.vim'
 " }}}
 call plug#end()
 
@@ -78,7 +76,7 @@ let g:rustfmt_autosave = 1
 	hi link EasyMotionShade Comment
 	hi link EasyMotionTarget Search
 	hi link EasyMotionMoveHL Search
-	hi EasyMotionIncSearch ctermfg=2 cterm=underline,italic
+	hi EasyMotionIncSearch ctermfg=2 cterm=underline
 " }}}
 " {{{ commentary
 	autocmd FileType racket setlocal commentstring=;\ %s
@@ -116,6 +114,7 @@ endfunction
 
 autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
+" }}}
 " }}}
 " }}}
 " }}}
