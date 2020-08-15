@@ -41,10 +41,11 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(awful.util.getdir("config") .. "/Serenity/theme.lua")
+-- beautiful.init(awful.util.getdir("config") .. "/Serenity/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/International/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "st"
+terminal = "alacritty"
 editor = os.getenv("EDITOR")
 editor_cmd = terminal .. " -e " .. editor
 
@@ -68,7 +69,7 @@ local function client_menu_toggle_fn()
 			instance:hide()
 			instance = nil
 		else
-			instance = awful.menu.clients({ theme = { width = 250 } })
+			instance = awful.menu.clients({ theme = { width = 500 } })
 		end
 	end
 end
@@ -76,16 +77,9 @@ end
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
-myawesomemenu = {
-   { "hotkeys", function() return false, hotkeys_popup.show_help end},
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end}
-}
 
 mymainmenu = awful.menu(
-		{ items = { { "awesome", myawesomemenu, nil },
+		{ items = { { "reload", awesome.restart, nil },
 					{ "term", terminal },
 					{ "lock", "slock" }}
 					})
@@ -96,7 +90,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Wibar
 -- Create a textclock widgez
-mytextclock = wibox.widget.textclock("%A, %B %e, %T ", 1)
+mytextclock = wibox.widget.textclock(" %A, %B %e, %T ", 1)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -114,7 +108,7 @@ local taglist_buttons = gears.table.join(
 		end),
 		awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
 		awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
-				)
+)
 
 local tasklist_buttons = gears.table.join(
 		awful.button({ }, 1, function (c)
@@ -161,7 +155,7 @@ awful.screen.connect_for_each_screen(function(s)
 	set_wallpaper(s)
 
 	-- Each screen has its own tag table.
-	awful.tag({ "deva", "asura", "manusya", "tyriagyoni", "preta", "naraka"}, s, awful.layout.layouts[1])
+	awful.tag({ "I", "II", "III", "IV", "V" }, s, awful.layout.layouts[1])
 
 	-- Create a promptbox for each screen
 	s.mypromptbox = awful.widget.prompt()
@@ -173,13 +167,13 @@ awful.screen.connect_for_each_screen(function(s)
 	s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
 
 	-- Create the wibox
-	s.mywibox = awful.wibar({ position = "top", screen = s })
+	s.mywibox = awful.wibar({ position = "bottom", screen = s })
 
 	-- Add widgets to the wibox
 	s.mywibox:setup {
 		layout = wibox.layout.align.horizontal,
 		{ -- Left widgets
-			layout = wibox.layout.fixed.horizontal,
+			layout = wibox.layout.align.horizontal,
 			s.mytaglist,
 			s.mypromptbox,
 		},
@@ -198,7 +192,7 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-	awful.button({ }, 3, function () mymainmenu:toggle() end),
+	awful.button({ }, 3, function () mymainmenu:toggle() end)
 ))
 -- }}}
 
@@ -238,13 +232,12 @@ globalkeys = gears.table.join(
 		function () myscreen = awful.screen.focused()
 		myscreen.mywibox.visible = not myscreen.mywibox.visible end,
 		{description = "toggle statusbar"}
-),
+))
 
 
 clientkeys = gears.table.join(
 	awful.key({ modkey, }, "f",
 		function (c)
-			c.fullscreen = not c.fullscreen
 			c.maximized = not c.maximized
 			c:raise()
 		end,
@@ -256,7 +249,7 @@ clientkeys = gears.table.join(
 		end,
 	{description = "close", group = "client"}),
 
-	 wm keys
+	-- wm keys
 	awful.key({ modkey, }, "g", function(c) awful.placement.centered(c) end),
 	awful.key({ modkey, }, "h", function(c) c:relative_move(-18,0,0,0) awful.placement.no_offscreen(c) end),
 	awful.key({ modkey, }, "k", function(c) c:relative_move(0,-18,0,0) awful.placement.no_offscreen(c) end),
@@ -294,7 +287,7 @@ for i = 1, 9 do
 				end
 			end,
 			{description = "toggle tag #" .. i, group = "tag"}),
-		Move client to tag.
+		-- Move client to tag.
 		awful.key({ modkey, "Shift" }, "#" .. i + 9,
 			function ()
 				if client.focus then
@@ -316,8 +309,8 @@ for i = 1, 9 do
 				end
 			end,
 		{description = "toggle focused client on tag #" .. i, group = "tag"})
-end
-	)
+)
+	end
 
 clientbuttons = gears.table.join(
 	awful.button({ }, 1, function (c) client.focus = c; c:raise() end),

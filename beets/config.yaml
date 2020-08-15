@@ -1,2 +1,8 @@
+directory: /media/kori/8f922474-3e46-492e-bd2a-306b9b7d7761/Music/
+plugins: convert
+
+convert:
+  format: ogg
+  dest: android
 paths:
-    default: $albumartist/$album/${track}. $title
+    default: ${albumartist}/${album}/${mb_releasegroupid}/${track}. ${title}

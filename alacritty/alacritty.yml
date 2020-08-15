@@ -1,0 +1,87 @@
+window:
+  padding:
+   x: 10
+   y: 10
+
+  dynamic_padding: true
+  decorations: full
+  title: Alacritty
+  class:
+    instance: Alacritty
+    general: Alacritty
+
+font:
+  size: 13
+  normal:
+    family: Triplicate t4c
+    style: bold
+  bold:
+    family: Triplicate t4c
+    style: bold
+  italic:
+    family: Triplicate t4c
+    style: bold italic
+
+
+draw_bold_text_with_bright_colors: true
+
+schemes:
+  shrine_d: &dark
+    primary:
+      background: '0x000000'
+      foreground: '0xebebeb'
+
+    normal:
+      black:   '0x1d3232'
+      red:     '0xcb3333'
+      green:   '0x6e9946'
+      yellow:  '0xb38e3e'
+      blue:    '0x4a6891'
+      magenta: '0x803E72'
+      cyan:    '0x66808c'
+      white:   '0xbebebe'
+
+    bright:
+      black:   '0x324949'
+      red:     '0xf23d3d'
+      green:   '0x86bd55'
+      yellow:  '0xd9ad4d'
+      blue:    '0x647da5'
+      magenta: '0xa65295'
+      cyan:    '0x82a2b2'
+      white:   '0xe6e6e6'
+
+  shrine_l: &light
+    primary:
+      background: '0xebebeb'
+      foreground: '0x0a0a0a'
+
+    normal:
+      black:   '0x868686'
+      red:     '0xcb3333'
+      green:   '0x6e9946'
+      yellow:  '0xb38e3e'
+      blue:    '0x4a6891'
+      magenta: '0x803E72'
+      cyan:    '0x66808c'
+      white:   '0x1d3232'
+
+    bright:
+      black:   '0xa6a6a6'
+      red:     '0xf23d3d'
+      green:   '0x86bd55'
+      yellow:  '0xd9ad4d'
+      blue:    '0x647da5'
+      magenta: '0xa65295'
+      cyan:    '0x82a2b2'
+      white:   '0x324949'
+
+colors: *light
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: false
+
+cursor:
+  style: Underline
+  uvnfocused_hollow: true

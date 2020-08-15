@@ -4,7 +4,7 @@ let mapleader = "\<Space>"
 " }}}
 
 " {{{ Plugins
-call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
+call plug#begin('/home/kori/.config/nvim/plugged')
 " {{{ Plug itself and colorscheme
 	Plug 'junegunn/vim-plug'
 	Plug 'kori/vim-diesel'
@@ -38,10 +38,17 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 	" {{{ Rust
 		Plug 'rust-lang/rust.vim'
 	" }}}
+	" {{{ Flutter
+		Plug 'dart-lang/dart-vim-plugin'
+		Plug 'thosakwe/vim-flutter'
+	" }}}
 	" {{{ Miscellaneous
 		Plug 'cespare/vim-toml'        " toml
 		Plug 'baskerville/vim-sxhkdrc' " sxhkdrc
 		Plug 'ekalinin/Dockerfile.vim' " Dockerfile
+		Plug 'https://gitlab.exherbo.org/exherbo-misc/exheres-syntax' " Exhereses
+		Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 		autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2 " YAML
 	" }}}
 	" }}}
@@ -51,7 +58,6 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 		Plug 'tpope/vim-surround'
 		Plug 'easymotion/vim-easymotion'
 		Plug 'ap/vim-css-color'
-		Plug 'junegunn/goyo.vim'
 " }}}
 call plug#end()
 
@@ -89,32 +95,6 @@ let g:rustfmt_autosave = 1
 	autocmd Colorscheme * hi Sneak ctermbg=none ctermfg=15
 	autocmd Colorscheme * hi SneakScope ctermbg=none ctermfg=0
 " }}}
-" {{{ goyo
-let g:goyo_linenr = 1
-
-" autocmd VimEnter * Goyo 80+0x100%+0
-
-function! s:goyo_enter()
-  let b:quitting = 0
-  let b:quitting_bang = 0
-  autocmd QuitPre <buffer> let b:quitting = 1
-  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
-endfunction
-
-function! s:goyo_leave()
-  " Quit Vim if this is the only remaining buffer
-  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-    if b:quitting_bang
-      qa!
-    else
-      qa
-    endif
-  endif
-endfunction
-
-autocmd! User GoyoEnter call <SID>goyo_enter()
-autocmd! User GoyoLeave call <SID>goyo_leave()
-" }}}
 " }}}
 " }}}
 " }}}
@@ -144,10 +124,9 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 
 "{{{ Things I don't use
 	set mouse=v
-	let s:cfghome = $XDG_CONFIG_HOME
-	execute 'set directory=' . s:cfghome . '/nvim/useless/swap/'
-	execute 'set backupdir=' . s:cfghome . '/nvim/useless/bkp/'
-	execute 'set undodir='   . s:cfghome . '/nvim/useless/undo/'
+	execute 'set directory=/home/kori/.config/nvim/useless/swap/'
+	execute 'set backupdir=/home/kori/.config/nvim/useless/bkp/'
+	execute 'set undodir=/home/kori/.config/nvim/useless/undo/'
 " }}}
 
 " {{{ Custom additions
